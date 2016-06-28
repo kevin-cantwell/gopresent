@@ -1,0 +1,134 @@
+################################################################################
+# begin-header
+Title of document
+Subtitle of document
+15:04 2 Jan 2006
+Tags: foo, bar, baz
+# The subtitle, date, and tags lines are optional.
+# The date line may be written without a time.
+
+Author Name
+Author Title, Company
+author@example.com
+http://author/
+@twitter_author
+Author's thank you slide comment.
+
+Co-Author Name
+Co-Author Title, Company
+co-author@example.com
+http://co-author/
+@twitter_coauthor
+Co-Author's thank you slide comment.
+# end-header
+
+################################################################################
+# begin-intro OMIT
+* Introduction
+
+This presentation documents the syntax supported by Go's [[https://godoc.org/golang.org/x/tools/cmd/present][present]] tool, as it applies to slide presentations. Each slide herein provides information about the `.slide` file syntax followed immediately by the actual code used to generate the preceding slide.
+
+Source:
+.link https://godoc.org/golang.org/x/tools/present
+# end-intro OMIT
+
+################################################################################
+* example.slide
+
+.code -numbers example.slide /^# begin-intro/,/^# end-intro/
+
+################################################################################
+* Document Title & Thank You Slides
+
+
+
+################################################################################
+* example.slide
+
+.code -numbers example.slide /^# begin-header/,/^# end-header/
+
+################################################################################
+# begin-basics
+* The Basics
+
+Some text
+
+- bullet point
+- nested bullet points are not supported
+
+Some more text
+
+  Preformatted text
+  is indented (however you like)
+
+Inline links may be [[http://golang.org][labeled]] or raw: [[http://golang.org]]
+
+# end-basics
+
+################################################################################
+* example.slide
+
+.code -numbers example.slide /^# begin-basics/,/^# end-basics/
+
+################################################################################
+# begin-fonts
+* Fonts
+
+Text bracketed by font markers will be presented in italic, bold, or program font.
+
+Marker characters are _ (italic), * (bold) and ` (program font).
+
+_italic_
+*bold*
+`program`
+_this_is_all_italic_
+_Why_use_scoped__ptr_? Use plain ***ptr* instead.
+# end-fonts
+
+################################################################################
+* example.slide
+
+.code -numbers example.slide /^# begin-fonts/,/^# end-fonts/
+
+################################################################################
+* Functions
+
+A number of template functions are available through invocations in the input text.
+
+Each such invocation contains a period as the first character on the line, followed 
+immediately by the name of the function, followed by any arguments.
+
+A typical invocation might be
+
+  .play demo.go /^func show/,/^}/
+
+################################################################################
+# begin-links
+* Link Function
+
+The .link function creates a link indented on it's own line. 
+
+Labeled:
+.link http://golang.org labeled link
+
+Raw:
+.link http://golang.org
+
+# end-links
+
+################################################################################
+* example.slide
+
+.code -numbers example.slide /^# begin-links/,/^# end-links/
+
+################################################################################
+# begin-linkfunc
+* Link Function
+
+
+# end-linkfunc
+
+################################################################################
+* example.slide
+
+.code -numbers example.slide /^# begin-linkfunc/,/^# end-linkfunc/
