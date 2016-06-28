@@ -1,0 +1,198 @@
+################################################################################
+# begin-header OMIT
+Go Present How-To
+Slide Formatting and Syntax
+16:08 28 Jun 2016
+Tags: foo, bar, baz
+# The subtitle, date, and tags lines are optional.
+# The date line may be written without a time.
+
+Kevin Cantwell
+Lead Architect, Timehop
+# The lines below are only used in the final slide
+kevin.cantwell@gmail.com
+http://kvn.nyc
+@kevrone
+
+Go forth and present!
+# end-header OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-header/,/^# end-header/
+
+################################################################################
+# begin-intro OMIT
+* Introduction
+
+Go's [[https://godoc.org/golang.org/x/tools/cmd/present][present]] tool is a file server that can serve specially defined `.slide` or `.article` files. This presentation focuses on the syntax of `.slide` files only, which are documented at
+
+.link https://godoc.org/golang.org/x/tools/present
+
+This presentation is also _self_documenting_. Each informational slide is followed by a slide containing the source code used to generate it. You already saw one example of this on the previous slide!
+
+Click next to see how this slide was generated.
+
+
+# end-intro OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-intro/,/^# end-intro/
+
+################################################################################
+# begin-basics OMIT
+* The Basics
+
+This is some text.
+
+- This is a bullet point
+- Nested bullet points are not supported
+
+  Preformatted text
+  is indented by at least one whitespace character
+ Subsequent lines that are prefixed by fewer whitespace characters
+ it will be formatted in their own block
+
+Inline links may be [[http://golang.org][labeled]] or unlabeled: [[http://golang.org]]
+
+# end-basics OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-basics/,/^# end-basics/
+
+################################################################################
+# begin-fonts OMIT
+* Fonts
+
+Text bracketed by font markers will be presented in italic, bold, or program font.
+
+Marker characters are _ (italic), * (bold) and ` (program font).
+
+- _italic_
+- *bold*
+- `program`
+- _this_is_all_italic_
+
+Double markers represent an escape sequence.
+
+- _Why_use_scoped__ptr_? Use plain ***ptr* instead.
+# end-fonts OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-fonts/,/^# end-fonts/
+
+################################################################################
+# begin-functions OMIT
+* Functions
+
+A number of template functions are available through invocations in the source.
+
+Each such invocation contains a period as the first character on the line, followed 
+immediately by the name of the function, followed by any arguments.
+
+A typical invocation might be
+
+  .play hello.go /^func hello/,/^}/
+
+which generates
+.play hello.go /^func hello/,/^}/
+
+# end-functions OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-functions/,/^# end-functions/
+
+################################################################################
+# begin-links OMIT
+* Link Function
+
+The `.link` function creates a link indented on it's own line. 
+
+The syntax is 1 or 2 space-separated arguments. The first argument is always the HTTP URL. If there is a second argument, it is the text label to display for this link.
+
+  .link http://golang.org labeled link
+
+.link http://golang.org labeled link
+
+  .link http://golang.org
+
+.link http://golang.org
+
+# end-links OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-links/,/^# end-links/
+
+################################################################################
+# begin-code OMIT
+* Code Function
+
+The `.code` function injects program source into the slide. The arguments are a file name followed by an optional address that specifies what section of the file to display. The optional `numbers` flag displays line numbers.
+
+This
+
+  .code -numbers hello.go /^func main/,/^}/
+
+generates
+.code -numbers hello.go /^func main/,/^}/
+
+# end-code OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-code/,/^# end-code/
+
+################################################################################
+# begin-code2 OMIT
+* Code Function (Cont'd)
+
+Lines ending in `OMIT` are deleted from the source before inclusion, making it easy to write things like
+
+  .code hello.go /START OMIT/,/END OMIT/
+
+to find snippets like this
+
+  // START OMIT
+  // Now you see me
+  // END OMIT
+  // Now you don't
+
+and only see
+
+.code hello.go /START OMIT/,/END OMIT/
+
+# end-code2 OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-code2/,/^# end-code2/
+
+################################################################################
+# begin-play OMIT
+* Play Function
+
+The `.play` function is identical to `.code` but puts a button on the displayed source so the program can be run from the browser.
+
+.play droid.go /START OMIT/,/END OMIT/
+
+*Note:* Although only the selected text is shown, all the source is included in the HTML output, so be careful not to include secrets anywhere in the source.
+
+# end-play OMIT
+
+################################################################################
+* gopresent.slide
+
+.code -numbers gopresent.slide /^# begin-play/,/^# end-play/
