@@ -8,10 +8,10 @@ Tags: foo, bar, baz
 # The date line may be written without a time.
 
 Kevin Cantwell
-Lead Architect, Timehop
+Lead Engineer, Timehop
 # The lines below are only used in the final slide
 kevin.cantwell@gmail.com
-http://kvn.nyc
+https://github.com/kevin-cantwell
 @kevrone
 Go forth and present!
 # end-header OMIT
@@ -120,10 +120,10 @@ immediately by the name of the function, followed by any arguments.
 
 A typical invocation might be
 
-  .play assets/hello.go /^func hello/,/^}/
+  .play howto/hello.go /^func hello/,/^}/
 
 which generates
-.play assets/hello.go /^func hello/,/^}/
+.play howto/hello.go /^func hello/,/^}/
 
 # end-functions OMIT
 
@@ -163,10 +163,10 @@ The `.code` function injects program source into the slide. The arguments are a 
 
 This
 
-  .code -numbers assets/hello.go /^func main/,/^}/
+  .code -numbers howto/hello.go /^func main/,/^}/
 
 generates
-.code -numbers assets/hello.go /^func main/,/^}/
+.code -numbers howto/hello.go /^func main/,/^}/
 
 # end-code OMIT
 
@@ -181,7 +181,7 @@ generates
 
 Lines ending in `OMIT` are deleted from the source before inclusion, making it easy to write things like
 
-  .code assets/hello.go /START OMIT/,/END OMIT/
+  .code howto/hello.go /START OMIT/,/END OMIT/
 
 to find snippets like this
 
@@ -192,7 +192,7 @@ to find snippets like this
 
 and only see
 
-.code assets/hello.go /START OMIT/,/END OMIT/
+.code howto/hello.go /START OMIT/,/END OMIT/
 
 # end-code2 OMIT
 
@@ -207,7 +207,7 @@ and only see
 
 The `.play` function is identical to `.code` but puts a button on the displayed source so the program can be run from the browser.
 
-.play assets/shades.go /START OMIT/,/END OMIT/
+.play howto/shades.go /START OMIT/,/END OMIT/
 
 *Note:* Although only the selected text is shown, all the source is included in the HTML output. So be careful not to include secrets anywhere in the source.
 
@@ -224,7 +224,7 @@ The `.play` function is identical to `.code` but puts a button on the displayed 
   import "github.com/kevin-cantwell/dotmatrix"
 
   func main() {
-    f, _ := os.Open("assets/shades.png")
+    f, _ := os.Open("howto/shades.png")
     img, _ := png.Decode(f)
     dotmatrix.Encode(os.Stdout, img)
   }
@@ -237,9 +237,9 @@ The `.play` function is identical to `.code` but puts a button on the displayed 
 
 The `.image` function injects image files into the slide. The first argument is always the file name. If there are more arguments, they are the height and width. Replacing a dimension argument with the underscore parameter preserves the aspect ratio of the image when scaling.
 
-  .image assets/r2d2.png 300 _
+  .image howto/r2d2.png 300 _
 
-.image assets/r2d2.png 300 _
+.image howto/r2d2.png 300 _
 
 # end-image OMIT
 
@@ -254,9 +254,9 @@ The `.image` function injects image files into the slide. The first argument is 
 
 The `.video` function injects video files into the slide. The first argument is always the file name. The second argument is always the file content-type. If there are more arguments, they are the height and width. Replacing a dimension argument with the underscore parameter preserves the aspect ratio of the image when scaling.
 
-  .video assets/alien.mp4 video/mp4 300 _
+  .video howto/alien.mp4 video/mp4 300 _
 
-.video assets/alien.mp4 video/mp4 300 _
+.video howto/alien.mp4 video/mp4 300 _
 
 # end-video OMIT
 
@@ -271,9 +271,9 @@ The `.video` function injects video files into the slide. The first argument is 
 
 The `.background` function sets the background image for a slide. The only argument is the file name of the image.
 
-  .background assets/background.jpg
+  .background howto/background.jpg
 
-.background assets/background.jpg
+.background howto/background.jpg
 
 *Note:* Backgrounds do not tile. An image of size 1101 x 700 appears to work best.
 
@@ -323,11 +323,11 @@ The `.iframe` function injects iframes into the slide. The first argument is alw
 # begin-html OMIT
 * HTML Function
 
-The `.html`includes the contents of the specified file as unescaped HTML.
+The `.html` function includes the contents of the specified file as unescaped HTML.
 
-  .html assets/embed.html
+  .html howto/embed.html
 
-.html assets/embed.html
+.html howto/embed.html
 
 # end-html OMIT
 
@@ -337,4 +337,4 @@ The `.html`includes the contents of the specified file as unescaped HTML.
 .code -numbers howto.slide /^# begin-html/,/^# end-html/
 
 `embed.html`
-.code assets/embed.html
+.code howto/embed.html
